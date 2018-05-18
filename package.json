@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "set NODE_ENV=dev &&  webpack-dev-server --config webpack.config.test.js --progress --colors",
     "start": "set NODE_ENV=dev && webpack-dev-server --progress --colors",
-    "build": "rd/s/q wx && set NODE_ENV=production && webpack --config webpack-production.config.js --progress --colors --display-reason --display-modules"
+    "build": "rd/s/q wx && set NODE_ENV=production && webpack --config webpack-production.config.js --progress --colors --display-reason --display-modules",
+    "mocktest": "node --harmony ./test/mock/server.js",
+    "mockapp": "node --harmony ./app/mock/server.js"
   },
   "author": "刘洋",
   "license": "ISC",
@@ -26,6 +28,9 @@
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.29.0",
     "html-withimg-loader": "^0.1.16",
+    "koa": "^2.4.1",
+    "koa-body": "^2.5.0",
+    "koa-router": "^7.3.0",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
     "open-browser-webpack-plugin": "0.0.5",
@@ -40,13 +45,25 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "es6-promise": "^4.2.4",
     "flexible": "^0.1.20",
-    "react": "^15.6.1",
+    "jquery": "^3.3.1",
+    "react": "^15.6.2",
     "react-addons-css-transition-group": "^15.6.0",
     "react-addons-perf": "^15.4.2",
     "react-addons-pure-render-mixin": "^15.6.2",
     "react-dom": "^15.6.1",
+    "react-flexible": "^1.0.7",
+    "react-listview": "^0.1.0",
+    "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-swipe": "^5.1.1",
+    "react-swiper": "^0.1.5",
+    "redux": "^3.7.2",
+    "swipe-js-iso": "^2.0.4",
     "vue": "^2.4.2",
-    "vue-awesome-swiper": "^2.6.7"
+    "vue-awesome-swiper": "^2.6.7",
+    "whatwg-fetch": "^2.0.3"
   }
 }

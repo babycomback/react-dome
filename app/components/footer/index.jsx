@@ -1,9 +1,18 @@
 import React from 'react'
+import PureRenderMixin from 'react-addons-pure-render-mixin'
+
 import { Link ,NavLink} from 'react-router-dom'
 
 import './style'
 
 class Footer extends React.Component{
+	 constructor(props, context) {
+        super(props, context);
+        this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+        this.state = {
+            initDone: true
+        }
+    }
 	render(){
 		return (
 			<div className="nav">

@@ -28,7 +28,7 @@ class MoneyList extends React.Component{
 			<div style={{textAlign:'center',color:'#9B9B9B',fontSize:'0.32rem',lineHeight:'0.6rem',marginBottom:'0.3rem'}}>
 				<div>市场有风险，投资需谨慎</div>
 			</div>
-				<Footer/>
+			<Footer/>
 			</div>
 		)
 	}

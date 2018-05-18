@@ -35,7 +35,7 @@ input {
 }
 #root{
 	width:10rem;
-	height:100%;
+	min-height:100%;
 	margin: 0 auto;
     position: relative;
     -webkit-overflow-scrolling: touch;
@@ -47,11 +47,11 @@ input {
 .wrapper{
 	padding-bottom: 1.53125rem;
 }
-.float-left{
+.fl{
 	float:left;
 }
 
-.float-right{
+.fr{
 	float:right;
 }
 .clearance-top{
@@ -75,4 +75,13 @@ input {
 	text-overflow:ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
+}
+
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden
 }

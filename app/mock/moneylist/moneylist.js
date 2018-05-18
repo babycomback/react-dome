@@ -366,48 +366,6 @@ module.exports = {
                     "prodTitleNew": "周周派息-6044期", 
                     "pushLabel": "", 
                     "status": 1
-                }, 
-                {
-                    "action": "0", 
-                    "addInterestLabel": "", 
-                    "addRate": 4.5, 
-                    "buyStatus": 6, 
-                    "canBuyAmt": 1999900, 
-                    "cycleType": 4, 
-                    "detailLabel": "", 
-                    "investTerm": "14周", 
-                    "label": "", 
-                    "loanCycle": 14, 
-                    "maxBuyAmt": 2000000, 
-                    "maxRate": 11, 
-                    "minBuyAmt": 100, 
-                    "minRate": 11, 
-                    "prodId": 5542, 
-                    "prodTitle": "14周定期", 
-                    "prodTitleNew": "周周派息-5542期", 
-                    "pushLabel": "", 
-                    "status": 1
-                }, 
-                {
-                    "action": "0", 
-                    "addInterestLabel": "", 
-                    "addRate": 6, 
-                    "buyStatus": 2, 
-                    "canBuyAmt": 2000000, 
-                    "cycleType": 4, 
-                    "detailLabel": "", 
-                    "investTerm": "14周", 
-                    "label": "定制加薪V计划", 
-                    "loanCycle": 14, 
-                    "maxBuyAmt": 2000000, 
-                    "maxRate": 11, 
-                    "minBuyAmt": 100, 
-                    "minRate": 11, 
-                    "prodId": 6043, 
-                    "prodTitle": "14周定期", 
-                    "prodTitleNew": "周周派息-6043期", 
-                    "pushLabel": "", 
-                    "status": 1
                 }
             ]
         }

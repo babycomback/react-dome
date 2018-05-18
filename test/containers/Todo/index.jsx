@@ -1,6 +1,9 @@
 import React from 'react'
 import List from '../../components/List/index.jsx'
 import Input from '../../components/Input/index.jsx'
+import createBrowserHistory from 'history/createBrowserHistory'
+
+const history = createBrowserHistory();
 
 class Todo extends React.Component{
 	constructor(props,context){
@@ -12,8 +15,9 @@ class Todo extends React.Component{
 	render(){
 		return (
 				<div>
-					{<Input submitFn={this.submitFn.bind(this)}/>}
-					{<List deleteFn={this.deleteFn.bind(this)} todos={this.state.todos}/>}
+					<Input submitFn={this.submitFn.bind(this)}/>
+					<List deleteFn={this.deleteFn.bind(this)} todos={this.state.todos}/>
+					<div onClick={this.callback.bind(this)}>goBack</div>
 				</div>
 			)
 	}
@@ -35,6 +39,12 @@ class Todo extends React.Component{
 				}
 			})
 		})
+	}
+	callback(){
+		console.log('history:',history)
+		console.log('history.length:',history.length)
+		history.goBack()
+
 	}
 }
 

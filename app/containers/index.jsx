@@ -1,17 +1,34 @@
 import React from 'react'
-import { Route } from 'react-router'
-import Home from './Home'
-
+import PureRenderMixin from 'react-addons-pure-render-mixin'
 import '../static/css/font.css'
 import '../static/css/common.less'
+
+
 class App extends React.Component {
+	 constructor(props, context) {
+        super(props, context);
+        // this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+        this.state = {
+            initDone: false
+        }
+    }
     render() {
         return (
             <div>
-                <Route exact path='/' component={Home}/>
+                {
+                    this.state.initDone
+                    ? this.props.children 
+                    : <div>正在加载...</div>
+                }
             </div>
 
         )
+    }
+    componentDidMount(){
+        // 更改状态
+        this.setState({
+            initDone: true
+        })
     }
 }
 export default App

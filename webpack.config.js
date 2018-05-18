@@ -4,22 +4,22 @@ let htmlWebpackPlugin = require('html-webpack-plugin');
 let openBrowserPlugin = require('open-browser-webpack-plugin');
 
 module.exports = {
-	entry:path.resolve(__dirname,'./test/index.jsx'),
+	entry:path.resolve(__dirname,'./app/index.jsx'),
 	output:{
 		filename:'bundle.js'
 	},
 	module:{
-		rules:[
+		rules:[ 
 			{
 				test:/\.(js|jsx)$/,
 				exclude:/node_modules/,
 				loader:'babel-loader',
-				// use:{
+				// use:[
 				// 	loader:'babel-loader',
 				// 	query:{
 				// 		presets:['react']
 				// 	}
-				// }
+				// ]
 			},
 			// 不使用extract-text-webpack-plugin将css分离
 			{
@@ -70,6 +70,33 @@ module.exports = {
 						}
 					}
 				]
+			},
+			
+			{
+				test:/\.(png|woff|woff2|svg|ttf|eot)($|\?)/i,
+				use:[
+					{
+						loader:'url-loader',
+						options:{
+							limit:5000,
+							name:path.posix.join('assets','img/[name].[ext]')
+						}
+					}
+				]
+				// loader:'url-loader?limit=5000'//限制大小5kb；
+			},
+			{
+				test:/\.(png|jpg|gif|jpeg|bmp)$/i,
+				exclude:/node_modules/,
+				use:[
+					{
+						loader:'file-loader',
+						options:{
+							name:path.posix.join('assets','img/[name].[ext]')
+						}
+					}
+				]
+				// loader:'file-loader?limit=5000'//限制大小5kb；
 			},
 			// 使用extract-text-webpack-plugin将css分离
 			// {
@@ -126,25 +153,17 @@ module.exports = {
 			// 		]
 			// 	})
 			// },
-			{
-				test:/\.(png|jpg|gif|jpeg|bmp)$/i,
-				exclude:/node_modules/,
-				loader:'file-loader?limit=5000'//限制大小5kb；
-			},
-			{
-				test:/\.(png|woff|woff2|svg|ttf|eot)($|\?)/i,
-				loader:'url-loader?limit=5000'//限制大小5kb；
-			}
 		]
 	},
 	resolve:{
-		extensions:['.js','.json','.less','.css'],
+		extensions:['.js','.json','.less','.css','.jsx'],
 		alias:{}
 	},
 	plugins:[
 		// 对html进行打包
 		new htmlWebpackPlugin({
-			template:'./test/index.html'
+			template:'./app/index.html',
+			inject:'body'
 		}),
 		// 打开浏览器
 		new openBrowserPlugin({
@@ -156,6 +175,12 @@ module.exports = {
 		})
 	],
 	devServer: {
+		proxy:{
+			'/api':{
+				target:'http://localhost:4000',
+				secure:false
+			}
+		},
 		contentBase: path.join(__dirname, "app"),//告诉服务器从哪里提供内容。只有在你想要提供静态文件时才需要。devServer.publicPath 将用于确定应该从哪里提供 bundle，并且此选项优先。
   		compress: true,//一切服务都启用gzip 压缩：
   		port: 3000,

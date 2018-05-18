@@ -1,4 +1,5 @@
 import React from 'react'
+import PureRenderMixin from 'react-addons-pure-render-mixin'
 
 import MoneyList from '../../components/MoneyList'
 import { MoneyListData } from '../../fetch/MoneyList/MoneyList'
@@ -6,6 +7,7 @@ import { MoneyListData } from '../../fetch/MoneyList/MoneyList'
 class Money extends React.Component {
 	constructor(props, context){
 		super(props, context);
+        this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
 		this.state = {
             fixedData:[],
             noviceData:[],
@@ -22,7 +24,7 @@ class Money extends React.Component {
     }
     componentDidMount(){
     	var data = {
-    		'week14':1
+    		'week14':0
     	}
     	const result = MoneyListData(data);
     	result.then(res => {
